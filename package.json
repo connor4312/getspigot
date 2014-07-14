@@ -1,0 +1,26 @@
+{
+  "name": "getspigot",
+  "version": "0.0.0",
+  "description": "New download site for Spigot",
+  "main": "Gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://connor4312@github.com/connor4312/getspigot.git"
+  },
+  "author": "Connor Peet <connor@connorpeet.com>",
+  "license": "Proprietary",
+  "bugs": {
+    "url": "https://github.com/connor4312/getspigot/issues"
+  },
+  "dependencies": {
+    "gulp": "~3.8.6",
+    "gulp-load-plugins": "~0.5.3",
+    "gulp-less": "~1.3.1",
+    "gulp-uncss": "~0.4.5",
+    "gulp-minify-css": "~0.3.6",
+    "gulp-uglify": "~0.3.1",
+    "gulp-htmlmin": "~0.1.3",
+    "gulp-imagemin": "~0.6.1"
+    "glob": "~4.0.4"
+  }
+}

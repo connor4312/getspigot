@@ -1,0 +1,22 @@
+{
+  "name": "getspigot",
+  "version": "0.0.0",
+  "homepage": "https://github.com/connor4312/getspigot",
+  "description": "New download site for Spigot",
+  "authors": [
+    "Connor Peet <connor@connorpeet.com>"
+  ],
+  "main": "Gulpfile.js",
+  "license": "Proprietary",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
