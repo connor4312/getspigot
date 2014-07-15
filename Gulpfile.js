@@ -1,50 +1,44 @@
 var gulp = require('gulp'),
     glob = require('glob'),
+    g_if = require('gulp-if'),
+    prefix = require('gulp-autoprefixer'),
+    args = require('yargs').argv,
     $ = require('gulp-load-plugins')();
 
+var isProduction = args.type === 'production';
 
-gulp.task('dist-css', function() {
+gulp.task('css', function() {
     gulp.src('src/css/style.less')
         .pipe($.less())
-        .pipe($.uncss({html: glob.sync('src/*.html')}))
-        .pipe($.minifyCss())
+        .pipe(prefix('last 3 versions'))
+        .pipe(g_if(isProduction, $.uncss({html: glob.sync('src/*.html')})))
+        .pipe(g_if(isProduction, $.minifyCss()))
         .pipe(gulp.dest('./dist/css'));
 });
-gulp.task('dist-js', function () {
+gulp.task('js', function () {
     gulp.src('src/js/*.js')
-        .pipe($.uglify())
+        .pipe(g_if(isProduction, $.uglify()))
+        .pipe(gulp.dest('./dist/js'));
+
+    gulp.src('src/js/*.coffee')
+        .pipe($.coffee())
+        .pipe(g_if(isProduction, $.uglify()))
         .pipe(gulp.dest('./dist/js'));
 });
-gulp.task('dist-html', function() {
+gulp.task('html', function() {
     gulp.src('src/*.html')
-        .pipe($.htmlmin({collapseWhitespace: true}))
+        .pipe(g_if(isProduction, $.htmlmin({collapseWhitespace: true})))
         .pipe(gulp.dest('./dist'));
 });
-gulp.task('dist-images', function() {
+gulp.task('images', function() {
     gulp.src('src/img/*')
-        .pipe($.imagemin({
+        .pipe(g_if(isProduction, $.imagemin({
             progressive: true
-        }))
+        })))
         .pipe(gulp.dest('./dist/img'));
 });
-
-
-gulp.task('dev-html', function() {
-    gulp.src('src/*.html').pipe(gulp.dest('./dist'));
-});
-gulp.task('dev-js', function () {
-    gulp.src('src/js/*.js').pipe(gulp.dest('./dist/js'));
-});
-gulp.task('dev-css', function() {
-    gulp.src('src/css/style.less')
-        .pipe($.less())
-        .pipe(gulp.dest('./dist/css'));
-});
-gulp.task('dev-images', function() {
-    gulp.src('src/img/*')
-        .pipe(gulp.dest('./dist/img'));
+gulp.task('misc', function () {
+    gulp.src('src/**/*.woff').pipe(gulp.dest('./dist'));
 });
 
-
-gulp.task('default', ['dev-html', 'dev-js', 'dev-css', 'dev-images']);
-gulp.task('dist', ['dist-html', 'dist-js', 'dist-css', 'dist-images']);
+gulp.task('default', ['html', 'js', 'css', 'images', 'misc']);
