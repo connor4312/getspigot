@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
     glob = require('glob'),
-    g_if = require('gulp-if'),
     prefix = require('gulp-autoprefixer'),
     args = require('yargs').argv,
     $ = require('gulp-load-plugins')();
@@ -27,12 +26,12 @@ gulp.task('js', function () {
 });
 gulp.task('html', function() {
     gulp.src('src/*.html')
-        .pipe(g_if(isProduction, $.htmlmin({collapseWhitespace: true})))
+        .pipe($.if(isProduction, $.htmlmin({collapseWhitespace: true})))
         .pipe(gulp.dest('./dist'));
 });
 gulp.task('images', function() {
     gulp.src('src/img/*')
-        .pipe(g_if(isProduction, $.imagemin({
+        .pipe($.if(isProduction, $.imagemin({
             progressive: true
         })))
         .pipe(gulp.dest('./dist/img'));
