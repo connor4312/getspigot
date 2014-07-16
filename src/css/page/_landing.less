@@ -1,0 +1,148 @@
+@download-padding: 20px;
+@download-button-height: 50px;
+@download-image-height: 51px;
+@download-image-flood: 20px;
+
+.download-landing {
+    background: url('../img/landing-background.png');
+
+    h1 {
+        font-size: 80px;
+        font-style: italic;
+        letter-spacing: -3px;
+        color: #fff;
+        text-align: center;
+        margin: 75px 0 20px;
+        font-weight: 600;
+
+        b {
+            font-weight: 900;
+        }
+    }
+}
+
+.download-box {
+    background: url('../img/pattern.png');
+    padding: @download-padding;
+    color: #fff;
+    text-align: center;
+    max-width: 515px;
+    margin: 50px auto 0;
+}
+
+.download-box-link {
+    background: linear-gradient(#ffffff, #f0f0f0);
+    margin: @download-padding -@download-padding -@download-padding;
+    padding: @download-padding / 2;
+    color: #999;
+    position: relative;
+    cursor: pointer;
+
+    .pull-left,
+    .pull-right {
+        width: 20%;
+        line-height: @download-button-height;
+    }
+
+    .pull-right {
+        text-align: right;
+    }
+
+    h3 {
+        width: 60%;
+        margin: 0;
+        text-align: center;
+        float: left;
+        line-height: @download-button-height;
+        text-transform: uppercase;
+        color: #000;
+        font-weight: 300;
+        font-size: 36px;
+
+        small {
+            display: block;
+            text-transform: none;
+            margin: 0 0 -12px;
+            font-size: 12px;
+            color: #333;
+        }
+    }
+
+    h3,
+    .pull-left,
+    .pull-right {
+        margin-bottom: -@download-image-flood;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: @download-image-height;
+        background: url('../img/download-button-end.png') center center no-repeat;
+        bottom: -@download-image-height;
+        left: 0;
+        right: 0;
+        display: block;
+        z-index: -1;
+    }
+}
+
+.download-content {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -@download-padding;
+    padding: 0 @download-padding;
+
+    > * {
+        position: absolute;
+        left: @download-padding;
+        right: @download-padding;
+    }
+    
+    p {
+        margin: @grid-gutter-width 0;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.download-more {
+    margin-top: 71px;
+    display: block;
+    text-align: center;
+    color: #666;
+}
+
+.download-box-toggle {
+    .slider-toggle();
+    display: inline-block;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .29);
+    background: linear-gradient(#925513, #9c5e15);
+    margin: -@download-padding 0 -(2 * @download-padding - @grid-gutter-width);
+    top: -30px;
+
+    li {
+        padding: 15px 35px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: @brand-primary;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .32);
+        transition: 1s text-shadow;
+        
+        &.active {
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0);
+            text-shadow: none;
+        }
+    }
+
+    .focuser {
+        background: linear-gradient(#fff, #e0e0e0);
+    }
+}

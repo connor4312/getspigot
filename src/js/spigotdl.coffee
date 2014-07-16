@@ -3,8 +3,11 @@
 # can grab heights and such!
 ##########################################################################
 $.fn.whileHidden = (action, args...) ->
-    r = @show()[action](args...)
-    @hide()
+    if @is ':visible'
+        r = @[action](args...)
+    else
+        r = @show()[action](args...)
+        @hide()
 
     return r
 
@@ -13,23 +16,56 @@ $.fn.whileHidden = (action, args...) ->
 ##########################################################################
 
 animate =
+    whenDone: (func) ->
+        setTimeout func, 1000
+
     animate: (attribute, $element, callback = ->) ->
         if cls = $element.attr attribute
             cls += ' animated'
             $element.addClass cls
-            setTimeout ->
+
+            @whenDone ->
                 $element.removeClass(cls)
                 callback()
-            , 1000
         else
             callback()
 
-    out: ($element) ->
-        @animate 'data-animate-out', $element, -> $element.hide()
+    out: ($element, callback = ->) ->
+        $element.each (indexx, item) =>
+            @animate 'data-animate-out', $(item), ->
+                $(item).hide()
 
-    in: ($element) ->
+        @whenDone callback
+
+    in: ($element, callback = ->) ->
         $element.show()
-        @animate 'data-animate-in', $element
+        $element.each (index, item) =>
+            @animate 'data-animate-in', $(item)
+
+        @whenDone callback
+
+##########################################################################
+# Scripts specific to the index download page
+##########################################################################
+
+if $('.download-landing').length then do ->
+
+    computeHeight = ->
+        height = 0
+        $content = $('.download-content > *')
+        for i in $content
+            height = Math.max $(i).whileHidden('height'), height
+
+        $('.download-content').css 'min-height', height
+
+    $(window).on 'resize load', computeHeight
+
+$('.download-box-link').on 'click', ->
+    dl = $(@).attr 'data-link'
+    $frame = $('<iframe />').attr('src', dl).css 'display', 'none'
+
+    animate.animate 'data-animate-download', $(@)
+    $('body').append $frame
 
 ##########################################################################
 # Slider toggles
@@ -39,8 +75,13 @@ $('.slider-toggle').each ->
     $this    = $ @
     $focuser = $ '.focuser', $this
     items    = []
+    selected = -1
+    active   = false
 
     selectItem = (item) ->
+        if active or item.$el?.is selected
+            return
+
         $focuser.css
             left: item.offset
             width: item.width
@@ -50,17 +91,20 @@ $('.slider-toggle').each ->
                 i.$el.removeClass 'active'
                 animate.out i.$elements
 
-        item.$el.addClass 'active'
-        animate.in item.$elements
+        active = true
+        selected = item.$el
 
-    do computeItems = ->
+        item.$el.addClass 'active'
+        animate.in item.$elements, -> active = false
+
+    computeItems = ->
         items = []
         $('li', $this).each ->
             $el     = $ @
             $elements = $ '[data-toggle="' + $el.attr('data-content') + '"]'
             data =
                 $el: $el
-                width: $el.width()
+                width: $el.outerWidth()
                 offset: $el.position().left
                 $elements: $elements
 
@@ -68,21 +112,7 @@ $('.slider-toggle').each ->
             items.push data
             $el.on 'click', -> selectItem data
 
-    $(window).resize computeItems
-    selectItem items[0]
+    i.$elements.hide() for i in items
 
-##########################################################################
-# Scripts specific to the index download page
-##########################################################################
-
-if $('.download-landing').length then do ->
-
-    do computeHeight = ->
-        height = 0
-        $content = $('.download-content')
-        for i in $content
-            height = Math.max $(i).whileHidden('height'), height
-
-        $content.css 'min-height', height
-
-    $(window).resize computeHeights
+    $(window).on 'load resize', computeItems
+    $(window).on 'load', -> selectItem items[0]

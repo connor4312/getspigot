@@ -10,18 +10,18 @@ gulp.task('css', function() {
     gulp.src('src/css/style.less')
         .pipe($.less())
         .pipe(prefix('last 3 versions'))
-        .pipe(g_if(isProduction, $.uncss({html: glob.sync('src/*.html')})))
-        .pipe(g_if(isProduction, $.minifyCss()))
+        .pipe($.if(isProduction, $.uncss({html: glob.sync('src/*.html')})))
+        .pipe($.if(isProduction, $.minifyCss()))
         .pipe(gulp.dest('./dist/css'));
 });
 gulp.task('js', function () {
     gulp.src('src/js/*.js')
-        .pipe(g_if(isProduction, $.uglify()))
+        .pipe($.if(isProduction, $.uglify()))
         .pipe(gulp.dest('./dist/js'));
 
     gulp.src('src/js/*.coffee')
         .pipe($.coffee())
-        .pipe(g_if(isProduction, $.uglify()))
+        .pipe($.if(isProduction, $.uglify()))
         .pipe(gulp.dest('./dist/js'));
 });
 gulp.task('html', function() {
