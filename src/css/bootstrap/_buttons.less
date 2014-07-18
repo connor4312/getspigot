@@ -1,0 +1,50 @@
+.button-variant(@color; @background; @border) {
+    @shadow-opacity: 100% - abs(50% - lightness(@background));
+
+    color: @color;
+    background-color: @background;
+    text-shadow: 0 1px 0 (rgba(255, 255, 255, 0) - contrast(@background, rgba(255, 255, 255, @shadow-opacity), rgba(0, 0, 0, @shadow-opacity)));
+    border-color: @border;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-width: 3px;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+        color: @color;
+        background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+    }
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+        background-image: none;
+    }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            background-color: @background;
+            border-color: @border;
+        }
+    }
+
+    .badge {
+        color: @background;
+        background-color: @color;
+    }
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}

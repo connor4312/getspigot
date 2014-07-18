@@ -1,0 +1,94 @@
+@overview-fontsize: 60px;
+@overview-margin: @grid-gutter-width / 2;
+@overview-paragraph-fontsize: 15px;
+@overview-paragraph-lineheight: @overview-paragraph-fontsize * (4/3);
+@overview-link-color: mix(#fff, @brand-primary, 66%);
+
+.overview-box {
+    .fancy-shadow(2px, 0.1, 2px);
+}
+
+.overview-title {
+    background: @brand-primary-light;
+    overflow: auto;
+    position: relative;
+
+    h1 {
+        &:extend(.sleek-title);
+        margin: @overview-margin (@overview-margin * 2) @overview-margin;
+        color: #fff;
+        font-size: @overview-fontsize;
+        line-height: @overview-fontsize;
+        float: left;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+        font-size: @overview-paragraph-fontsize;
+        color: #fff;
+        line-height: @overview-paragraph-lineheight;
+        min-height: @overview-paragraph-lineheight * 2;
+        margin: ((@overview-fontsize + @overview-margin - @overview-paragraph-lineheight) * 0.5) @overview-margin;
+    }
+
+    a {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        font-size: 12px;
+        color: @overview-link-color;
+        border-bottom: 1px dotted @overview-link-color;
+        
+        &:hover {
+            text-decoration: none;
+            border-bottom: none;
+        }
+    }
+}
+
+.overview-list {
+    padding: 0;
+    line-height: @btn-small-height;
+    background: #fff;
+
+    li {
+        list-style-type: none;
+
+    }
+
+    a {
+        padding: @grid-gutter-width / 4;
+        display: block;
+        .clearfix();
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            text-decoration: none;
+            background: @brand-primary-light;
+
+            .build-number, .overview-build {
+                color: #fff;
+            }
+        }
+    }
+
+    .build-number {
+        font-size: 24px;
+    }
+}
+
+.overview-build {
+    color: #999;
+    font-size: 12px;
+}
+
+.overview-build-success {
+    color: @brand-success;
+}
+
+.overview-build-failure {
+    color: @brand-danger;
+}

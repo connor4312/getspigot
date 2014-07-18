@@ -26,6 +26,7 @@ gulp.task('js', function () {
 });
 gulp.task('html', function() {
     gulp.src('src/*.html')
+        .pipe($.renderful())
         .pipe($.if(isProduction, $.htmlmin({collapseWhitespace: true})))
         .pipe(gulp.dest('./dist'));
 });

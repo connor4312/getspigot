@@ -1,0 +1,40 @@
+.sleek-title {
+    font-style: italic;
+    letter-spacing: -3px;
+    text-align: center;
+    font-weight: 600;
+
+    b {
+        font-weight: 900;
+        font-size: 80px;
+    }
+}
+
+.build-number {
+    font-family: @font-family-monospace;
+    font-weight: bold;
+    color: #999;
+
+    small {
+        font-size: 0.66em;
+        color: #ccc;
+        position: relative;
+        top: -0.17em;
+        margin: 0 -0.33em;
+    }
+}
+
+.fancy-shadow(@size; @opacity; @indent) {
+    position: relative;
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: @indent;
+        right: @indent;
+        bottom: -@size;
+        height: @size;
+        background: rgba(0, 0, 0, @opacity);
+    }
+}

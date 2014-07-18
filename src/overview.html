@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <%- include spigot_header.html %>
+    <div class="container">
+        <div class="col-md-6">
+            <div class="overview-box">
+                <div class="overview-title">
+                    <h1>Spigot</h1>
+                    <p>A falsis, torus primus nomen. Poeta, ratione, et nomen.</p>
+                    <a href="">Read More</a>
+                </div>
+                <ul class="overview-list">
+                    <% for (var i = 9085; i > 9082; i--) {%>
+                    <li>
+                        <a href="">
+                            <span class="col-sm-4 build-number"><small>Build</small> #9084</span>
+                            <span class="overview-build col-sm-4">
+                                <i class="checkmark overview-build-success">Y</i>
+                                Build Success
+                            </span>
+                            <span class="btn btn-default btn-sm col-sm-4">
+                                Download
+                            </span>
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="overview-box">
+                <div class="overview-title">
+                    <h1>Bungee</h1>
+                    <p>A falsis, torus primus nomen. Poeta, ratione, et nomen.</p>
+                    <a href="">Read More</a>
+                </div>
+                <ul class="overview-list">
+                    <% for (var i = 9085; i > 9082; i--) {%>
+                    <li>
+                        <a href="">
+                            <span class="col-sm-4 build-number"><small>Build</small> #9084</span>
+                            <span class="overview-build col-sm-4">
+                                <i class="checkmark overview-build-success">Y</i>
+                                Build Success
+                            </span>
+                            <span class="btn btn-default btn-sm col-sm-4">
+                                Download
+                            </span>
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
