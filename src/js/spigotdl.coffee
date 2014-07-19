@@ -1,3 +1,4 @@
+do ->
 #########################################################################
 # Tiny jQuery plugin that lets us do actions on hidden elements, so we
 # can grab heights and such!
@@ -116,3 +117,21 @@ $('.slider-toggle').each ->
 
     $(window).on 'load resize', computeItems
     $(window).on 'load', -> selectItem items[0]
+
+##########################################################################
+# Click-to-copy elements
+##########################################################################
+
+if window.ZeroClipboard then do ->
+
+    handlers =
+        md5copied: -> @html 'Copied!'
+
+    client = new ZeroClipboard $('.js-copy')
+
+    client.on 'aftercopy', (e) ->
+        $el   = $ e.target
+        after = $el.attr 'data-aftercopy'
+
+        if after
+            handlers[after].apply $el

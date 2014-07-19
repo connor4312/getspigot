@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<%- include spigot_header.html %>
+<div class="container">
+    <h1 class="listing-title">Spigot</h1>
+    <div class="listing-item listing-top row">
+        <span class="listing-label">Latest Build</span>
+        <div class="col-sm-3 text-center">
+            <div class="build-number">
+                #9084 <small>3a18a7f2</small>
+            </div>
+            <span class="overview-build">
+                Build
+                <span class="overview-build-success">Passed</span>
+                6 Hours Ago
+            </span>
+        </div>
+        <div class="col-sm-7">
+            <p>Sunt liberies promissio rusticus, neuter indexes. Pol. Pol, placidus quadra! Ecce, castus idoleum! Elevatus talis index est. Gemna de gratis bulla, acquirere detrius! Nuptias cantare, tanquam secundus torus.</p>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-default btn-sm btn-download">
+                Download
+            </button>
+            <button class="btn btn-block btn-lightdash btn-sm js-copy" data-clipboard-text="md5sum" data-aftercopy="md5copied">
+                MD5 Checksum
+            </button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <% for (var i = 9085; i > 9080; i--) {%>
+    <div class="listing-item row">
+        <div class="col-sm-3 text-center">
+            <div class="build-number">
+                #<%= i %> <small>3a18a7f2</small>
+            </div>
+            <span class="overview-build">
+                Build
+                <span class="overview-build-success">Passed</span>
+                6 Hours Ago
+            </span>
+        </div>
+        <div class="col-sm-7">
+            <p>Sunt liberies promissio rusticus, neuter indexes. Pol. Pol, placidus quadra! Ecce, castus idoleum! Elevatus talis index est. Gemna de gratis bulla, acquirere detrius! Nuptias cantare, tanquam secundus torus.</p>
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-block btn-default btn-sm btn-download">
+                Download
+            </button>
+            <button class="btn btn-block btn-lightdash btn-sm js-copy" data-clipboard-text="md5sum" data-aftercopy="md5copied">
+                MD5 Checksum
+            </button>
+        </div>
+    </div>
+    <% } %>
+    <div class="text-center">
+        <ul class="pagination">
+            <li class="disabled"><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/ZeroClipboard.js"></script>
+    <script src="js/spigotdl.js"></script>
+</div>
+</body>
+</html>

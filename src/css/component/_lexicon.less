@@ -24,6 +24,32 @@
     }
 }
 
+.hovered-listing() {
+    text-decoration: none;
+    background: @brand-primary-light;
+
+    .build-number, .overview-build, & {
+        color: #fff;
+    }
+
+    .build-number small {
+        color: #f1d9be;
+    }
+
+    .overview-build-success {
+        color: mix(#fff, @brand-success, 66%);
+    }
+
+    .btn-default {
+        .button-variant(@btn-primary-color, @btn-primary-bg, @btn-primary-border);
+    }
+
+    .btn-lightdash {
+        border-color: #fff;
+        color: #fff;
+    }
+}
+
 .fancy-shadow(@size; @opacity; @indent) {
     position: relative;
 
