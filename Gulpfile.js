@@ -16,7 +16,8 @@ gulp.task('css', function() {
 gulp.task('js', function () {
     gulp.src([
         'src/js/*.js',
-        'bower_components/zeroclipboard/dist/ZeroClipboard.js'
+        'bower_components/zeroclipboard/dist/ZeroClipboard.js',
+        'bower_components/Chart.js/Chart.js'
     ]).pipe($.if(isProduction, $.uglify()))
       .pipe(gulp.dest('./dist/js'));
 

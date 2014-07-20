@@ -50,6 +50,43 @@
     }
 }
 
+.input-copy {
+    cursor: pointer;
+
+    .form-control {
+        transition: 0.2s;
+        background: #303030;
+        color: #777;
+        font-family: @font-family-monospace;
+        border: none;
+    }
+
+    &:after {
+        border-radius: @border-radius-base;
+        transition: 0.2s;
+        opacity: 1;
+        position: absolute;
+        right: @grid-gutter-width / 2;
+        left: @grid-gutter-width / 2;
+        top: 0;
+        bottom: 0;
+        background: linear-gradient(to right, rgba(48, 48, 48, 0), rgba(48, 48, 48, 1));
+        content: "";
+    }
+
+    &.copied {
+        .form-control {
+            background: @brand-primary-light;
+            color: #000;
+            text-align: center;
+        }
+
+        &:after {
+            opacity: 0;
+        }
+    }
+}
+
 .fancy-shadow(@size; @opacity; @indent) {
     position: relative;
 

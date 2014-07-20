@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<%- include spigot_header.html %>
+<div class="container">
+    <h1 class="listing-title">Spigot <small>Build 9343</small></h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="download-box-light">
+                <div class="row">
+                    <div class="col-sm-4"><label>Direct Link</label></div>
+                    <div class="col-sm-8">
+                        <div class="input-copy js-copy" data-clipboard-text="http://foo.example.com/build1324.jar" data-aftercopy="inputCopied">
+                            <input type="text" class="form-control" value="http://foo.example.com/build1324.jar">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4"><label>Link Download</label></div>
+                    <div class="col-sm-8">
+                        <div class="input-copy js-copy" data-clipboard-text="curl -O http://foo.example.com/build1324.jar" data-aftercopy="inputCopied">
+                            <input type="text" class="form-control" value="curl -O http://foo.example.com/build1324.jar">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4"><label>MD5 Checksum</label></div>
+                    <div class="col-sm-8">
+                        <div class="input-copy js-copy" data-clipboard-text="6e466c1a74a698ef3b4abaeeaf7ba037" data-aftercopy="inputCopied">
+                            <input type="text" class="form-control" value="6e466c1a74a698ef3b4abaeeaf7ba037">
+                        </div>
+                    </div>
+                </div>
+                <div class="download-box-link" data-toggle="spigot" data-link="download.zip" data-animate-download="pulse">
+                    <div class="pull-left">Version 1.7.9</div>
+                    <h3>
+                        Download
+                        <small>12.3 Megabytes</small>
+                    </h3>
+                    <div class="pull-right">Build 1234</div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    Download History <small>5345 Total</small>
+                </div>
+                <div class="panel-body">
+                    <script type="application/json" id="download-chart">
+                        [
+                            {
+                                "x": 1405209600,
+                                "y": 0
+                            }, {
+                                "x": 1405296000,
+                                "y": 256
+                            }, {
+                                "x": 1405382400,
+                                "y": 495
+                            }, {
+                                "x": 1405468800,
+                                "y": 150
+                            }, {
+                                "x": 1405555200,
+                                "y": 265
+                            }, {
+                                "x": 1405641600,
+                                "y": 280
+                            }, {
+                                "x": 1405728000,
+                                "y": 111
+                            }
+                        ]
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading">Commit Log</div>
+                <div class="panel-body">
+                    <% for (var i = 5; i; i--) {%>
+                        <div class="row commit">
+                            <div class="col-sm-2 commit-hash">
+                                <%= Math.random().toString(36).slice(2, 10) %>
+                            </div>
+                            <div class="col-sm-2 commit-author">
+                                <a href="">
+                                    <img src="http://www.gravatar.com/avatar/2bc85974b8b9e4346a4a5d5df532053c.png?s=20" alt="Connor Peet">
+                                    Connor Peet
+                                </a>
+                            </div>
+                            <div class="col-sm-8">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eget porta velit, sit amet interdum nibh. Quisque elementum diam a gravida vestibulum.</p>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/ZeroClipboard.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/spigotdl.js"></script>
+</div>
+</body>
+</html>

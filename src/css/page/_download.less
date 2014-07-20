@@ -1,0 +1,80 @@
+.download-box-light {
+    padding: 20px;
+    max-width: 515px;
+    margin: 0 auto 75px;
+    background: #fff;
+    color: #666;
+    
+    label {
+        font-weight: normal;
+        line-height: @btn-base-height;
+    }
+
+    .download-box-link {
+        background: linear-gradient(@brand-primary-light, #ef8e21);
+        text-align: center;
+
+        &, small {
+            color: #f1d9be;
+        }
+
+        &:after {
+            background: url('../img/download-button-light-end.png');
+        }
+
+        h3 {
+            color: #fff;
+        }
+    }
+}
+
+.panel {
+    background: #fff;
+    margin: 0 (@grid-gutter-width / 2) @grid-gutter-width;
+    padding: @grid-gutter-width;
+
+    .panel-heading {
+        text-transform: uppercase;
+        font-size: 18px;
+        margin-bottom: @grid-gutter-width;
+        color: #666;
+
+        small {
+            float: right;
+            color: #aaa;
+        }
+    }
+}
+
+.commit-hash {
+    &:extend(.build-number);
+    text-align: center;
+}
+
+.commit-author {
+    img {
+        border-radius: 2px;
+        margin: 0 3px 3px;
+        display: inline-block;
+    }
+}
+
+
+
+#download-chart {
+    position: relative;
+}
+
+.graph-bullet {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    border: 3px solid @brand-primary;
+    transform: translate(29px, -7px);
+    background: #fff;
+
+    &:last-child {
+        display: none;
+    }
+}

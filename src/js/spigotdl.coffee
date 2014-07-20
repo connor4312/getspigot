@@ -126,6 +126,17 @@ if window.ZeroClipboard then do ->
 
     handlers =
         md5copied: -> @html 'Copied!'
+        inputCopied: ->
+            $input  = $ 'input', @
+            oldVal = $input.val()
+
+            $input.val 'Copied!'
+            @addClass 'copied'
+
+            setTimeout =>
+                @removeClass('copied')
+                $input.val oldVal
+            , 3000
 
     client = new ZeroClipboard $('.js-copy')
 
@@ -135,3 +146,41 @@ if window.ZeroClipboard then do ->
 
         if after
             handlers[after].apply $el
+
+##########################################################################
+# Download graphs
+##########################################################################
+
+if $ '#download-chart' then do ->
+    $container = $ '#download-chart'
+    data       = JSON.parse $container.html()
+    $chart     = $ '<canvas id="download-chart" />'
+
+    $chart.attr 'width',  $container.parent().innerWidth()
+          .attr 'height', $('.download-box-light').outerHeight() - (15 * 5)
+
+    $container.replaceWith $chart
+
+    labels = []
+    plot   = []
+    for item in data
+        date = new Date(item.x * 1000)
+
+        labels.push (date.getMonth() + 1) + '/' + date.getDate()
+        plot.push item.y
+
+    chart = new Chart($chart[0].getContext('2d')).Line
+        labels: labels
+        datasets: [{
+            label: 'Downloads'
+            fillColor: 'rgba(0, 0, 0, 0)'
+            strokeColor: '#d7811e'
+            pointColor: '#fff'
+            pointStokeColor: '#d7811e'
+            pointHighlightFill: '#d7811e'
+            pointHighlightStoke: '#fff'
+            data: plot
+        }]
+    ,
+        bezierCurve: false
+        scaleSteps: 3
