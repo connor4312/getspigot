@@ -18,16 +18,18 @@
                 <ul class="overview-list">
                     <% for (var i = 9085; i > 9080; i--) {%>
                     <li>
-                        <a href="">
-                            <span class="col-sm-4 build-number"><small>Build</small> #<%= i %></span>
-                            <span class="overview-build col-sm-4">
+                        <div onclick="window.location=''">
+                            <div class="col-xs-4 build-number text-center"><small>Build</small> #<%= i %></div>
+                            <div class="col-xs-4 overview-build text-center">
                                 <i class="icon icon-checkmark overview-build-success"></i>&nbsp;
                                 Build Success
-                            </span>
-                            <span class="btn btn-default btn-sm col-sm-4 btn-download">
-                                Download
-                            </span>
-                        </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-default btn-sm btn-block" href="">
+                                    Download
+                                </a>
+                            </div>
+                        </div>
                     </li>
                     <% } %>
                 </ul>
@@ -43,16 +45,18 @@
                 <ul class="overview-list">
                     <% for (var i = 9085; i > 9080; i--) {%>
                     <li>
-                        <a href="">
-                            <span class="col-sm-4 build-number"><small>Build</small> #<%= i %></span>
-                            <span class="overview-build col-sm-4">
+                        <div onclick="window.location=''">
+                            <div class="col-xs-4 build-number text-center"><small>Build</small> #<%= i %></div>
+                            <div class="col-xs-4 overview-build text-center">
                                 <i class="icon icon-checkmark overview-build-success"></i>&nbsp;
                                 Build Success
-                            </span>
-                            <span class="btn btn-default btn-sm col-sm-4 btn-download">
-                                Download
-                            </span>
-                        </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-default btn-sm btn-block" href="">
+                                    Download
+                                </a>
+                            </div>
+                        </div>
                     </li>
                     <% } %>
                 </ul>

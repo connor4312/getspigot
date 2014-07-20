@@ -54,19 +54,19 @@
     li {
         list-style-type: none;
 
-    }
+        > div {
+            cursor: pointer;
+            padding: @grid-gutter-width / 4;
+            display: block;
+            .clearfix();
 
-    a {
-        padding: @grid-gutter-width / 4;
-        display: block;
-        .clearfix();
+            &:last-child {
+                border-bottom: none;
+            }
 
-        &:last-child {
-            border-bottom: none;
-        }
-
-        &:hover {
-            .hovered-listing();
+            &:hover {
+                .hovered-listing();
+            }
         }
     }
 

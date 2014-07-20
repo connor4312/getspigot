@@ -89,14 +89,16 @@
                 <div class="panel-body">
                     <% for (var i = 5; i; i--) {%>
                         <div class="row commit">
-                            <div class="col-sm-2 commit-hash">
-                                <%= Math.random().toString(36).slice(2, 10) %>
-                            </div>
-                            <div class="col-sm-2 commit-author">
-                                <a href="">
-                                    <img src="http://www.gravatar.com/avatar/2bc85974b8b9e4346a4a5d5df532053c.png?s=20" alt="Connor Peet">
-                                    Connor Peet
-                                </a>
+                            <div class="col-sm-4 row">
+                                <div class="col-xs-6 commit-hash">
+                                    <%= Math.random().toString(36).slice(2, 10) %>
+                                </div>
+                                <div class="col-xs-6 commit-author">
+                                    <a href="">
+                                        <img src="http://www.gravatar.com/avatar/2bc85974b8b9e4346a4a5d5df532053c.png?s=20" alt="Connor Peet">
+                                        Connor Peet
+                                    </a>
+                                </div>
                             </div>
                             <div class="col-sm-8">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eget porta velit, sit amet interdum nibh. Quisque elementum diam a gravida vestibulum.</p>
