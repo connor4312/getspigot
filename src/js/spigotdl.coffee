@@ -151,7 +151,7 @@ if window.ZeroClipboard then do ->
 # Download graphs
 ##########################################################################
 
-if $ '#download-chart' then do ->
+if $('#download-chart').length then do ->
     $container = $ '#download-chart'
     data       = JSON.parse $container.html()
     $chart     = $ '<canvas id="download-chart" />'

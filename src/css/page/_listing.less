@@ -14,15 +14,30 @@
     max-height: @btn-small-height + 2 * @item-padding;
     overflow: hidden;
     padding: @item-padding 0;
+    cursor: pointer;
 
-    border-bottom: 1px solid @body-bg;
+    border-top: 1px solid @body-bg;
 
     transition: 0.6s max-height;
 
     &:hover, &.listing-top {
-        max-height: 500px;
-        border-bottom: none;
         .hovered-listing();
+
+        p:after {
+            background: linear-gradient(to right, rgba(red(@brand-primary-light), green(@brand-primary-light), blue(@brand-primary-light), 0), rgba(red(@brand-primary-light), green(@brand-primary-light), blue(@brand-primary), 1));
+        }
+
+        &, & + .listing-item {
+            border-top-color: @brand-primary-light;
+        }
+    }
+
+    &.listing-top {
+        max-height: inherit;
+
+        p:after {
+            display: none;
+        }
     }
 
     .build-number {
@@ -33,8 +48,22 @@
         margin: 0 0 @item-padding;
     }
 
-    &:last-child {
-        border-bottom: none;
+    p {
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 50%;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        }
+    }
+
+    &:first-child {
+        border-top: none;
     }
 }
 

@@ -59,6 +59,18 @@
         color: #777;
         font-family: @font-family-monospace;
         border: none;
+        padding-left: @btn-base-height * 0.75;
+    }
+
+    &:before {
+        &:extend(.icon);
+        &:extend(.icon-copy:before);
+
+        position: absolute;
+        line-height: @btn-base-height;
+        width: @btn-base-height * 0.75;
+        text-align: center;
+        color: @brand-primary-light;
     }
 
     &:after {
